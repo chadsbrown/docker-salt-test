@@ -1,23 +1,28 @@
-docker-apt-sources:
-  pkgrepo:
-    - managed
-    - name: deb http://get.docker.io/ubuntu docker main
-    - key_url: https://get.docker.io/gpg
+docker-python-apt:
+  pkg.installed:
+    - name: python-apt
 
-/etc/init/docker.conf:
-  file.managed:
-    - source: salt://config/docker/docker.conf
-    - user: root
-    - group: root
-    - mode: 644
+docker-dependencies:
+   pkg.installed:
+    - pkgs:
+      - iptables
+      - ca-certificates
+      - lxc
 
-python-pip:
-  pkg.installed
+docker_repo:
+    pkgrepo.managed:
+      - repo: 'deb http://get.docker.io/ubuntu docker main'
+      - file: '/etc/apt/sources.list.d/docker.list'
+      - key_url: salt://docker/docker.pgp
+      - require_in:
+          - pkg: lxc-docker
+      - require:
+        - pkg: docker-python-apt
 
-docker-py:
-  cmd:
-    - run
-    - name: pip install docker-py
+lxc-docker:
+  pkg.latest:
+    - require:
+      - pkg: docker-dependencies
 
 docker:
   service.running
