@@ -1,4 +1,4 @@
-trusty-ruby-dev:
+trusty-ruby-dev-image:
    docker.pulled:
      - name: chadsbrown/trusty-ruby-dev
      - require_in: trusty-ruby-dev-container
