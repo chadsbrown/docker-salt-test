@@ -1,6 +1,6 @@
 base:
   '*':
-    - provisioner.docker
+    - docker
   'roles:toolset':
     - match: grain
     - provisioner.saltmaster
