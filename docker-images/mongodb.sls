@@ -1,6 +1,6 @@
 mongodb-image:
    docker.pulled:
-     - name: mongodb/mongodb
+     - name: tutum/mongodb
      - require_in: mongodb-container
  
 mongodb-container:
