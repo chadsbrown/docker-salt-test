@@ -2,5 +2,5 @@ docker-package:
   pkg.installed:
     - name: docker.io
 
-docker:
+docker.io:
   service.running
