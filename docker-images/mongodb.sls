@@ -5,14 +5,14 @@ mongodb-image:
  
 mongodb-container:
    docker.installed:
-     - name: mongodb
+     - name: tmongodb
      - hostname: mongodb
-     - image: mongodb/mongodb
+     - image: tutum/mongodb
      - require_in: mongodb
  
 mongodb:
    docker.running:
-     - container: mongodb
+     - container: tmongodb
      - port_bindings:
             "27017/tcp":
                 HostIp: ""
