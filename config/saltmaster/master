@@ -603,6 +603,6 @@ auto_accept: True
 #  - 'https://github.com/saltstack/salt-winrepo.git'
 
 reactor:
-  - 'minion_start':
+  - 'salt/minion/*/start': 
     - /srv/salt/reactor/sync_grains.sls
     - /srv/salt/reactor/exec_salt_call.sls
